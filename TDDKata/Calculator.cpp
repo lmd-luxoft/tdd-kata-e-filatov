@@ -16,8 +16,11 @@ int Calculator::Add(char* expression)
     if (!strlen(expression)) {
         return -1; //Пустая строка
     }
+    char* pos = expression;
+    while (pos = strchr(pos, '\n')) {
+        *pos = ',';
+    }
 
-    char* pos = 0;
     pos = strchr(expression, ',');
     if (!pos) {
         return -2; //Не найден разделитель - недостаточно агрументов
@@ -32,6 +35,9 @@ int Calculator::Add(char* expression)
 
     do{
         if (strlen(++pos)) {
+            if ((*pos < '0') || (*pos > '9')) {
+                return -3; //Некорректная строка, после разделителя не число
+            }
             sscanf(pos, "%d", &cuttedNum);
             result += cuttedNum;
             paramCount++;
