@@ -10,6 +10,7 @@ int Calculator::Add(char* expression)
 {
     int cuttedNum = 0;
     int result = 0;
+    int paramCount = 0;
     char firstNumChar[16];
     
     if (!strlen(expression)) {
@@ -25,17 +26,21 @@ int Calculator::Add(char* expression)
         return -2; //Нет первого аргумента
     }
 
-    sscanf(expression, "%d", &cuttedNum);
-   
+    sscanf(expression, "%d", &cuttedNum); //Взяли первый аргумент
+    paramCount++;
     result += cuttedNum;
 
-    if (!strlen(++pos)) {
+    do{
+        if (strlen(++pos)) {
+            sscanf(pos, "%d", &cuttedNum);
+            result += cuttedNum;
+            paramCount++;
+        }
+    } while (pos = strchr(pos, ','));
+
+    if (paramCount<2) {
         return -2; //Недостаточно аргументов
     }
 
-    sscanf(pos, "%d", &cuttedNum);
-
-    result += cuttedNum;
-    
     return result;
 }

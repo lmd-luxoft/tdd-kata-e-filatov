@@ -33,15 +33,21 @@
 
 	TEST(TestCalcTDD, TestThreeParam) {
 		Calculator test_calc;
-		ASSERT_EQ(test_calc.Add("10,50,10"), 70); //Результат вычислений
+		char inputStr[] = "10,50,10";
+		int result = 70;
+		ASSERT_EQ(test_calc.Add(inputStr), result);//Результат вычислений
 	}
 
 	TEST(TestCalcTDD, TestFourParam) {
 		Calculator test_calc;
-		ASSERT_EQ(test_calc.Add("10,50,10,130"), 200); //Результат вычислений
+		char inputStr[] = "10,50,10,130";
+		int result = 200;
+		ASSERT_EQ(test_calc.Add(inputStr), result);//Результат вычислений
 	}
 
-	TEST(TestCalcTDD, Test5TimesRandomOf100Param) {
+	TEST(TestCalcTDD, Test20Param) {
 		Calculator test_calc;
-		ASSERT_EQ(test_calc.Add("10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10"), 200); //Результат вычислений
+		char inputStr[] = "10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10";
+		int result = 200;
+		ASSERT_EQ(test_calc.Add(inputStr), result); //Результат вычислений
 	}
