@@ -79,6 +79,49 @@
 		int result = -3;
 		ASSERT_EQ(test_calc.Add(inputStr), result); //-3 - Неверный формат строки
 	}
+
+	TEST(TestCalcTDD, TestCorrectNewSemantic1) {
+		Calculator test_calc;
+		char inputStr[] = "//;\n10;10;10;10;10;10;10;10";
+		int result = 80;
+		ASSERT_EQ(test_calc.Add(inputStr), result); 
+	}
+
+	TEST(TestCalcTDD, TestCorrectNewSemantic2) {
+		Calculator test_calc;
+		char inputStr[] = "//!\n10!10!10!10!10!10!10!10";
+		int result = 80;
+		ASSERT_EQ(test_calc.Add(inputStr), result);
+	} 
+
+	TEST(TestCalcTDD, TestIncorrectNewSemantic1) {
+		Calculator test_calc;
+		char inputStr[] = "//;;\n10;;10;;10"; //Предположим, что по ТЗ сепатор сосотоит только из одного символа
+		int result = -4;
+		ASSERT_EQ(test_calc.Add(inputStr), result);
+	}
+
+	TEST(TestCalcTDD, TestIncorrectNewSemantic2) {
+		Calculator test_calc;
+		char inputStr[] = "//1\n1011011011011010110110"; //Числововой сепаратор недопустим
+		int result = -4;
+		ASSERT_EQ(test_calc.Add(inputStr), result);
+	}
+
+	TEST(TestCalcTDD, TestIncorrectNewSemantic3) {
+		Calculator test_calc;
+		char inputStr[] = "//;\n10!10!10"; //Неверный формат строки
+		int result = -3;
+		ASSERT_EQ(test_calc.Add(inputStr), result);
+	}
+
+	TEST(TestCalcTDD, TestIncorrectNewSemantic4) {
+		Calculator test_calc;
+		char inputStr[] = "/;\n10;10;10"; //Неверный формат строки, только один '/'
+		int result = -3;
+		ASSERT_EQ(test_calc.Add(inputStr), result);
+	}
+
 		
 
 

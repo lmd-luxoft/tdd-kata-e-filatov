@@ -6,6 +6,15 @@ int Calculator::Add(std::string expression)
     return 0;
 }
 
+/*
+* @result
+* >=0 - result of operation
+* -1 - Empty expression
+* -2 - Less argument`s count
+* -3 - Incorrect input string
+* -4 - Incorrect separator
+*/
+
 int Calculator::Add(char* expression)
 {
     int cuttedNum = 0;
