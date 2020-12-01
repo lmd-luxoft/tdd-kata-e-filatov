@@ -51,3 +51,34 @@
 		int result = 200;
 		ASSERT_EQ(test_calc.Add(inputStr), result); //Результат вычислений
 	}
+
+	TEST(TestCalcTDD, TestCorrectParamWithNExpression1) {
+		Calculator test_calc;
+		char inputStr[] = "1\n2,3";
+		int result = 6;
+		ASSERT_EQ(test_calc.Add(inputStr), result); //Результат вычислений
+	}
+
+	TEST(TestCalcTDD, TestCorrectParamWithNExpression1) {
+		Calculator test_calc;
+		char inputStr[] = "10,10,10,10,10\n10,10,10,10,10\n10,10,10,10,10,10,10,10,10,10";
+		int result = 200;
+		ASSERT_EQ(test_calc.Add(inputStr), result); //Результат вычислений
+	}
+
+	TEST(TestCalcTDD, TestIncorrectParamWithNExpression1) {
+		Calculator test_calc;
+		char inputStr[] = "1,\n";
+		int result = -3;
+		ASSERT_EQ(test_calc.Add(inputStr), result); //-3 - Неверный формат строки
+	}
+
+	TEST(TestCalcTDD, TestCorrectParamWithNExpression1) {
+		Calculator test_calc;
+		char inputStr[] = "10,10,1\n,10,10\n10,10,1\n,10,10\n10,10,10,10,10,10,10,10,10,10";
+		int result = -3;
+		ASSERT_EQ(test_calc.Add(inputStr), result); //-3 - Неверный формат строки
+	}
+		
+
+
