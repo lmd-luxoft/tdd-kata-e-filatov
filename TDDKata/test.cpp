@@ -41,19 +41,7 @@
 		ASSERT_EQ(test_calc.Add("10,50,10,130"), 200); //Результат вычислений
 	}
 
-	TEST(TestCalcTDD, TestRandomOf100Param) {
+	TEST(TestCalcTDD, Test5TimesRandomOf100Param) {
 		Calculator test_calc;
-		int countParam = 4 + rand()%96;
-		std::cout << "Random Count = " << countParam;
-		char inputStr[300]; //Максимальная длина строки
-		int summaryResult = 0;
-		char* ptr = inputStr;
-		for (int i = 0; i < countParam; i++) {
-			int randomNum = rand() % 99;
-			summaryResult += randomNum;
-			sprintf(ptr, "%d,", randomNum);
-			ptr = strchr(ptr, ',') + 1;
-		}
-		*(ptr-1) = '\0';
-		ASSERT_EQ(test_calc.Add(inputStr), summaryResult); //Результат вычислений
+		ASSERT_EQ(test_calc.Add("10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10"), 200); //Результат вычислений
 	}
