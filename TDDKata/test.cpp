@@ -1,9 +1,11 @@
 #include "pch.h"
 #include "Calculator.h"
+#include "TestFixture.h"
 
-	TEST(TestCalcTDD, TestEmptyString) {
-		Calculator test_calc;
-		ASSERT_EQ(test_calc.Add(""), -1); //Код ошибки -1 - пустая строка
+	TEST_F(TestFixture, TestEmptyString) {
+		char input [] = "";
+		int result = test_calc->Add(input);
+		ASSERT_EQ(result, -1); //Код ошибки -1 - пустая строка
 	}
 
 	TEST(TestCalcTDD, TestZero) {

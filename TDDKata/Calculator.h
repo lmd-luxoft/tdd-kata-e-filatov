@@ -24,5 +24,14 @@ private:
 	/// <summary>
 	/// We need to check that string containes only numbers and separators
 	int CheckStringOnIncorrectSymbols(char* input, char separator);
+
+	/// <summary>
+	/// Calculate expression
+	/// </summary>
+	/// <returns> >=0 - result
+	///			  -2 - Too low parameters count
+	///			  -3 - Incorrect string
+	/// </returns>
+	int CalculateExpressionSum(char* input, char separator);
 };
 

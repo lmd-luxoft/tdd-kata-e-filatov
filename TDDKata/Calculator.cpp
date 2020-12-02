@@ -14,7 +14,6 @@ int Calculator::Add(std::string expression)
 * -3 - Incorrect input string
 * -4 - Incorrect separator
 */
-#define SEPARATOR_DEFINEDER "//"
 int Calculator::Add(char* expression)
 {
     int cuttedNum = 0;
@@ -30,7 +29,6 @@ int Calculator::Add(char* expression)
 
     const char* det = strstr(expression, "//");
     if(det == expression){
-    //if (1 == strcmp(expression, SEPARATOR_DEFINEDER)) {
         if (expression[3] == '\n') {
             separator = expression[2];
             if ((separator < '0') || (separator > '9')) {
@@ -65,24 +63,7 @@ int Calculator::Add(char* expression)
         return -2; //Нет первого аргумента
     }
 
-    sscanf(expression, "%d", &cuttedNum); //Взяли первый аргумент
-    paramCount++;
-    result += cuttedNum;
-
-    do{
-        if (strlen(++pos)) {
-            if ((*pos < '0') || (*pos > '9')) {
-                return -3; //Некорректная строка, после разделителя не число
-            }
-            sscanf(pos, "%d", &cuttedNum);
-            result += cuttedNum;
-            paramCount++;
-        }
-    } while (pos = strchr(pos, separator));
-
-    if (paramCount<2) {
-        return -2; //Недостаточно аргументов
-    }
+    result = CalculateExpressionSum(expression, separator);
 
     return result;
 }
@@ -94,4 +75,28 @@ int Calculator::CheckStringOnIncorrectSymbols(char* input, char separator) {
         }
         input++;
     } while (*input);
+}
+
+int Calculator::CalculateExpressionSum(char* input, char separator) {
+    int result = 0;
+    int cuttedNum = 0;
+    int paramCount = 0;
+
+    do {
+        if (paramCount) {
+            input++;
+        }
+        if ((*input < '0') || (*input > '9')) {
+            return -3; //Некорректная строка, после разделителя не число
+        }
+        sscanf(input, "%d", &cuttedNum); //Взяли аргумент
+        paramCount++;
+        result += cuttedNum;
+    } while (input = strchr(input, separator));
+
+    if (paramCount < 2) {
+        return -2; //Недостаточно аргументов
+    }
+
+    return result;
 }
