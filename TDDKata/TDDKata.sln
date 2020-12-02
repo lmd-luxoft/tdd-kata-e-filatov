@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30711.63
+VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TDDKata", "TDDKata.vcxproj", "{9B2EFCCD-341E-43F8-870B-252B19CD0D29}"
 EndProject
@@ -26,6 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8F8BA91B-E6AB-43DE-9A8F-AE536443F94C}
+		SolutionGuid = {51B6E877-66C2-4359-90AB-C66E9D8F9C12}
 	EndGlobalSection
 EndGlobal
