@@ -14,14 +14,17 @@ int Calculator::Add(std::string expression)
 * -3 - Incorrect input string
 * -4 - Incorrect separator
 */
-int Calculator::Add(char* expression)
+int Calculator::Add(char* in_expression)
 {
     int cuttedNum = 0;
     int result = 0;
     int paramCount = 0;
-    char firstNumChar[16];
+    char expression_copy [256];
+    char* expression = expression_copy;
     char* pos = 0;
     char separator = 0;
+
+    strcpy(expression, in_expression);
     
     if(!strlen(expression)) {
         return -1; //Пустая строка
@@ -64,6 +67,8 @@ int Calculator::Add(char* expression)
     }
 
     result = CalculateExpressionSum(expression, separator);
+
+    //delete expression;
 
     return result;
 }
